@@ -1,0 +1,103 @@
+
+<h2 style="text-align: center;margin-top: 20pt;">PDF Comparision</h2>
+
+<!-- if compare button is not clicked this block will work-->
+<div *ngIf="!showCompare">
+<!-- 
+    Browse files
+-->
+<form [formGroup]="form" (ngSubmit)="submit()">    
+    <div>
+        <div class="form-group displayBox box"  >
+
+            <label class="labelStyle" for="files1" >Choose Expected PDFs: </label>
+    
+            <input  type="file" style="margin-left:1%;" multiple (change)="onFileChange1($event)"  formControlName="files1"  placeholder="" >
+        </div>
+
+        <div class="form-group box displayBox"  >
+           
+            <label class="labelStyle" for="files2" >Choose Actual PDFs: </label>
+    
+            <input type="file" style="margin-left:1%;"  multiple (change)="onFileChange2($event)"  formControlName="files2"  placeholder="" >
+        </div>
+      </div>
+    <div class="buttonStyle"><button class="btn btn-primary buttonStyle"  type="submit" >Compare</button></div>
+</form>
+<!-- 
+<div  style=" width: 70%;margin: auto; border-style: solid;min-height: 300pt; border-width:2pt;margin-top: 20px;">
+    <div class="tableBorder">
+    <div style="display: flex;flex-direction: column;width:20%;text-align: center;">
+        <div style="border-style: solid; border-width:0 0 1pt 0;font-size: 20pt;font-weight: bold;">
+            Serial No.
+        </div>
+        <div *ngFor="let file of fileList1;let i=index" class="tableText">
+            {{i+1}}
+        </div>
+    </div>
+    <div style="display: flex;flex-direction: column;width:40%;text-align: center;">
+        <div style="border-style: solid; border-width:0 0 1pt 0;font-size: 20pt;font-weight: bold;">
+            Expected PDFs
+        </div>
+        <div *ngFor="let file of fileList1;let i=index" class="tableText">
+            {{file['name']}}
+        </div>
+    </div>
+    <div style="display: flex;flex-direction: column;width:40%;text-align: center;">
+        <div style="border-style: solid; border-width:0 0 1pt 0;font-size: 20pt;font-weight: bold;">
+            Actual PDFs
+        </div>
+        <div *ngFor="let file of fileList2;let i=index" class="tableText">
+            {{file['name']}}
+        </div>    
+     </div>
+    </div>
+</div> -->
+
+<!-- Show files in a table-->
+<div  class="wrapper">
+    
+    <div style="width:20%" class="tableColumn">
+        
+        <div class="tableHeader">
+            Serial No.
+        </div>
+        <div class="tableBorder">
+         <div *ngFor="let file of fileList1;let i=index" class="tableText">
+            {{i+1}}
+        </div>
+    </div>
+    </div>
+
+    <div style="width:40%;" class="tableColumn">
+        <div class="tableHeader">
+            Expected PDFs
+        </div>
+        <div class="tableBorder" appDragDropDirective (onFileDropped)="uploadFile($event)">
+        <div *ngFor="let file of fileList1;let i=index" class="tableText">
+            {{file['name']}}
+             <!-- <button class="btn"><i class="fa fa-close"></i></button> -->
+        </div>
+    </div>
+    </div>
+    <div style="width:40%;" class="tableColumn">
+        <div class="tableHeader">
+            Actual PDFs
+        </div>
+        <div class="tableBorder" appDragDropDirective (onFileDropped)="uploadFile2($event)">
+            <div *ngFor="let file of fileList2;let i=index" class="tableText">
+            {{file['name']}}
+        </div>   
+    </div> 
+     </div>
+    </div>
+</div>
+
+<!-- Compare report div -->
+<div  *ngIf="showCompare;" class="comapareblock">
+    <div class="buttonStyle"><button class="btn btn-primary buttonStyle"  type="submit" (click)='gotoHome()'>Go Back</button></div>
+    <h4>Compare Report</h4>
+</div>
+
+
+
