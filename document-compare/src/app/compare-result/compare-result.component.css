@@ -1,0 +1,12 @@
+.resultWindow{
+    width:90%;
+    margin: auto;
+    margin-top: 20pt;
+}
+iframe{
+    width:100%;
+    height:450pt;
+}
+.buttonStyle{
+    text-align:center;
+}

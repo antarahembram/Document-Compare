@@ -3,6 +3,9 @@
     float: left;
     /* font-family: serif; */
 }
+
+input[type="file"]:after {color: #fff}
+
 .displayRow{
     display:block;
 }

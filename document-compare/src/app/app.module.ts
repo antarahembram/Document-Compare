@@ -10,11 +10,13 @@ import { HomeComponent } from './home/home.component';
 import {APP_BASE_HREF} from '@angular/common';
 import { DocumentcompareService } from './documentcompare.service';
 import { DragDropDirectiveDirective } from './drag-drop-directive.directive';
+import { CompareResultComponent } from './compare-result/compare-result.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DragDropDirectiveDirective
+    DragDropDirectiveDirective,
+    CompareResultComponent
   ],
   imports: [
     BrowserModule,
